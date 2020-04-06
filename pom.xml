@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.wso2.maven.plugins</groupId>
+    <artifactId>swagger2cxf-maven-plugin</artifactId>
+    <packaging>maven-plugin</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>swagger2cxf-maven-plugin Maven Mojo</name>
+    <url>http://maven.apache.org</url>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- dependencies to annotations -->
+        <dependency>
+            <groupId>org.apache.maven.plugin-tools</groupId>
+            <artifactId>maven-plugin-annotations</artifactId>
+            <version>3.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-codegen</artifactId>
+            <version>2.1.6</version>
+        </dependency>
+        <!-- Web UI di Swagger -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+
+        <!-- Generazione della documentazione per API REST -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <!-- Generazione classi da Swagger -->
+            <plugin>
+            <groupId>it.bper</groupId>
+            <artifactId>swagger-codegen-maven-plugin</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <executions>
+            <execution>
+                <id>swagger</id>
+                <goals>
+                    <goal>generate</goal>
+                </goals>
+                <configuration>
+                    <inputSpec>./src/main/resources/yaml/swagger.yaml</inputSpec>
+                    <language>spring</language>
+                    <configOptions>
+                        <interfaceOnly>true</interfaceOnly>
+                    </configOptions>
+                    <modelPackage>it.prova.swagger.model</modelPackage>
+                    <apiPackage>it.prova.swagger.api</apiPackage>
+                    <output>target/generated-sources</output>
+                    <environmentVariables>
+                        <supportingFiles>
+                            ApiClient.java,ApiException.java,Configuration.java,JSON.java,Pair.java,StringUtil.java,TypeRef.java
+                        </supportingFiles>
+                    </environmentVariables>
+                </configuration>
+            </execution>
+            </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+
+</project>
