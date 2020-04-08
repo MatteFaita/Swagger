@@ -1,0 +1,259 @@
+paths:
+  /nuovo-operatore:
+    post:
+      operationId: nuoo-operatore
+      summary: 'Crea un nuovo nuovo operatore'
+      responses:
+        '200':
+          description: 'Ritorna successo in caso di avvenuta creazione del operatore '
+          schema:
+            x-oad-type: 'null'
+            type: 'null'
+          x-oad-type: response
+      parameters:
+        -
+          name: codiceFiscale
+          in: body
+          required: true
+          schema:
+            x-oad-type: string
+            type: string
+          x-oad-type: parameter
+        -
+            name: email
+            in: body
+            required: true
+            schema:
+              x-oad-type: string
+              type: string
+            x-oad-type: parameter
+        -
+            name: nome
+            in: body
+            required: true
+            schema:
+              x-oad-type: string
+              type: string
+            x-oad-type: parameter
+        -
+            name: cognome
+            in: body
+            required: true
+            schema:
+              x-oad-type: string
+              type: string
+            x-oad-type: parameter
+        -
+            name: luogoNascita
+            in: body
+            required: true
+            schema:
+              x-oad-type: string
+              type: string
+            x-oad-type: parameter
+        -
+            name: dataNascita
+            in: body
+            required: true
+            schema:
+              x-oad-type: string
+              type: string
+              format: date
+            x-oad-type: parameter
+        -
+            name: telefono
+            in: body
+            required: true
+            schema:
+              x-oad-type: string
+              type: string
+            x-oad-type: parameter
+    x-oad-type: operation
+  /modifica-operatore:
+    post:
+      operationId: modifica-operatore
+      description: 'Modifica un operatore'
+      responses:
+        '200':
+          description: 'Ritorna successo in caso di modifica del operatore'
+          schema:
+            x-oad-type: object
+            type: object
+            description: 'Oggetto di risposta'
+            properties:
+              response:
+                x-oad-type: string
+                type: string
+          x-oad-type: response
+      parameters:
+        -
+          name: codiceFiscale
+          in: body
+          required: true
+          schema:
+            x-oad-type: string
+            type: string
+          x-oad-type: parameter
+        -
+            name: email
+            in: body
+            required: true
+            schema:
+              x-oad-type: string
+              type: string
+            x-oad-type: parameter
+        -
+            name: nome
+            in: body
+            required: true
+            schema:
+              x-oad-type: string
+              type: string
+            x-oad-type: parameter
+        -
+            name: cognome
+            in: body
+            required: true
+            schema:
+              x-oad-type: string
+              type: string
+            x-oad-type: parameter
+        -
+            name: luogoNascita
+            in: body
+            required: true
+            schema:
+              x-oad-type: string
+              type: string
+            x-oad-type: parameter
+        -
+            name: dataNascita
+            in: body
+            required: true
+            schema:
+              x-oad-type: string
+              type: string
+              format: date
+            x-oad-type: parameter
+        -
+            name: telefono
+            in: body
+            required: true
+            schema:
+              x-oad-type: string
+              type: string
+            x-oad-type: parameter
+    x-oad-type: operation
+  /cancella-operatore:
+    post:
+      operationId: cancella-operatore
+      description: 'cancella un operatore'
+      responses:
+        '200':
+          description: 'Ritorna successo in caso di cancellazione del operatore'
+          schema:
+            x-oad-type: object
+            type: object
+            description: 'Oggetto di risposta'
+            properties:
+              response:
+                x-oad-type: string
+                type: string
+          x-oad-type: response
+      parameters:
+        -
+          name: codiceFiscale
+          in: body
+          required: true
+          schema:
+            x-oad-type: string
+            type: string
+          x-oad-type: parameter
+    x-oad-type: operation
+  /search-operatore:
+    post:
+      summary: 'Ricerca uno o più operatori'
+      responses:
+        '200':
+          description: 'Ritorna uno o più operatori'
+          schema:
+            x-oad-type: array
+            type: array
+            title: listaOperatori
+            description: 'Lista dei operatori'
+            items:
+              x-oad-type: object
+              type: object
+              title: Operatori
+              properties:
+                codiceFiscale:
+                  x-oad-type: string
+                  type: string
+                email:
+                  x-oad-type: string
+                  type: string
+                nome:
+                  x-oad-type: string
+                  type: string
+                cognome:
+                  x-oad-type: string
+                  type: string
+                luogoNascita:
+                  x-oad-type: string
+                  type: string
+                dataNascita:
+                  x-oad-type: string
+                  type: string
+                  format: date
+
+                telefono:
+                  x-oad-type: string
+                  type: string
+          x-oad-type: response
+      parameters:
+        -
+          name: codiceFiscale
+          in: body
+          description: 'Non vengono specificati i parametri di ricerca degli operatori per ora metto il codiceFiscale e basta'
+          required: true
+          schema:
+            x-oad-type: string
+            type: string
+          x-oad-type: parameter
+    x-oad-type: operation
+definitions:
+  Operatore:
+    x-oad-type: object
+    type: object
+    properties:
+      codiceFiscale:
+        x-oad-type: string
+        type: string
+      email:
+        x-oad-type: string
+        type: string
+      nome:
+        x-oad-type: string
+        type: string
+      cognome:
+        x-oad-type: string
+        type: string
+      luogoNascita:
+        x-oad-type: string
+        type: string
+      dataNascita:
+        x-oad-type: string
+        type: string
+        format: date
+      telefono:
+        x-oad-type: string
+        type: string
+info:
+  title: ConvenzioneAPI
+  version: '1.0'
+  description: 'API che crea/ricerca/edita un operatore'
+host: 'com.example:8080'
+basePath: /gestioneOperatore
+schemes:
+  - https
+swagger: '2.0'

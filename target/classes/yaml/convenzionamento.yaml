@@ -1,0 +1,191 @@
+paths:
+  /nuova-convenzione:
+    post:
+      operationId: nuova-convenzione
+      summary: 'Crea un nuovo convenzionamento'
+      responses:
+        '200':
+          description: 'Ritorna successo in caso di avvenuta creazione della convenzionamento'
+          schema:
+            x-oad-type: 'null'
+            type: 'null'
+          x-oad-type: response
+      parameters:
+        -
+          name: NDG
+          in: body
+          required: true
+          schema:
+            x-oad-type: string
+            type: string
+          x-oad-type: parameter
+        -
+          name: codiceFICS
+          in: path
+          required: true
+          type: string
+          x-oad-type: parameter
+        -
+          name: ABI
+          in: body
+          required: true
+          schema:
+            x-oad-type: string
+            type: string
+          x-oad-type: parameter
+        -
+          name: tipoAccesso
+          in: body
+          required: true
+          schema:
+            x-oad-type: string
+            type: string
+          x-oad-type: parameter
+        -
+          name: documenti
+          in: body
+          required: true
+          schema:
+            x-oad-type: array
+            type: array
+            items:
+              x-oad-type: string
+              type: string
+              format: byte
+          x-oad-type: parameter
+    x-oad-type: operation
+  /modifica-convenzione:
+    post:
+      operationId: modifica-convenzione
+      description: 'Modifica un convenzionamento'
+      responses:
+        '200':
+          description: 'Ritorna successo in caso di modifica del convenzionamento'
+          schema:
+            x-oad-type: object
+            type: object
+            description: 'Oggetto di risposta'
+            properties:
+              response:
+                x-oad-type: string
+                type: string
+          x-oad-type: response
+      parameters:
+        -
+          name: NDG
+          in: body
+          required: true
+          schema:
+            x-oad-type: string
+            type: string
+          x-oad-type: parameter
+        -
+          name: codiceFICS
+          in: path
+          required: true
+          type: string
+          x-oad-type: parameter
+        -
+          name: ABI
+          in: body
+          required: true
+          schema:
+            x-oad-type: string
+            type: string
+          x-oad-type: parameter
+        -
+          name: tipoAccesso
+          in: body
+          required: true
+          schema:
+            x-oad-type: string
+            type: string
+          x-oad-type: parameter
+        -
+          name: documenti
+          in: body
+          required: true
+          schema:
+            x-oad-type: array
+            type: array
+            items:
+              x-oad-type: string
+              type: string
+              format: byte
+          x-oad-type: parameter
+    x-oad-type: operation
+  /search-convenzione:
+    post:
+      summary: 'Ricerca uno o più convenzionamenti'
+      responses:
+        '200':
+          description: 'Ritorna uno o più convenzionamenti'
+          schema:
+            x-oad-type: array
+            type: array
+            title: listaConvenzionamenti
+            description: 'Lista dei convenzionamenti'
+            items:
+              x-oad-type: object
+              type: object
+              title: Convenzione
+              properties:
+                NDG:
+                  x-oad-type: string
+                  type: string
+                ABI:
+                  x-oad-type: string
+                  type: string
+                codiceFics:
+                  x-oad-type: string
+                  type: string
+                tipoAccesso:
+                  x-oad-type: string
+                  type: string
+          x-oad-type: response
+      parameters:
+        -
+          name: NDG
+          in: body
+          description: 'Non vengono specificati i parametri di ricerca dei convenzionamenti per ora metto l''ndg e basta'
+          required: true
+          schema:
+            x-oad-type: string
+            type: string
+          x-oad-type: parameter
+    x-oad-type: operation
+definitions:
+  Convenzione:
+    x-oad-type: object
+    type: object
+    properties:
+      NDG:
+        x-oad-type: string
+        type: string
+      codiceFIcs:
+        x-oad-type: string
+        type: string
+      ABI:
+        x-oad-type: string
+        type: string
+      tipoAccesso:
+        x-oad-type: string
+        type: string
+      documentiCaricati:
+        x-oad-type: array
+        type: array
+        description: 'documenti necessari per la creazione del convenzionamento'
+        items:
+          x-oad-type: string
+          type: string
+          description: 'codice documento caricato su filenet'
+          format: byte
+info:
+  title: ConvenzioneAPI
+  version: '1.0'
+  description: 'API che crea/ricerca/edita un convenzionamento'
+host: 'com.example:8080'
+basePath: /convenzione
+schemes:
+  - https
+swagger: '2.0'

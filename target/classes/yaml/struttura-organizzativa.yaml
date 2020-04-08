@@ -1,0 +1,164 @@
+paths:
+  /nuova-struttura-organizzativa:
+    post:
+      operationId: nuova-struttura-organizzativa
+      summary: 'Crea un nuovo nuova struttura organizzativa'
+      responses:
+        '200':
+          description: 'Ritorna successo in caso di avvenuta creazione della struttura organizzativa'
+          schema:
+            x-oad-type: 'null'
+            type: 'null'
+          x-oad-type: response
+      parameters:
+        -
+          name: idConvenzione
+          in: body
+          required: true
+          schema:
+            x-oad-type: string
+            type: string
+          x-oad-type: parameter
+        -
+          name: iivelliStruttura
+          in: body
+          required: true
+          schema:
+            x-oad-type: array
+            type: array
+            title: 'Livelli struttura'
+            items:
+              x-oad-type: object
+              type: object
+              title: 'livello struttura'
+              properties:
+                nomeLivelloStruttura:
+                  x-oad-type: string
+                  type: string
+                tipologiaLivelloStruttura:
+                  x-oad-type: string
+                  type: string
+          x-oad-type: parameter
+    x-oad-type: operation
+  /modifica-struttura-organizzativa:
+    post:
+      operationId: modifica-struttura-organizzativa
+      description: 'Modifica una struttura organizzativa'
+      responses:
+        '200':
+          description: 'Ritorna successo in caso di modifica della struttura organizzativa'
+          schema:
+            x-oad-type: object
+            type: object
+            description: 'Oggetto di risposta'
+            properties:
+              response:
+                x-oad-type: string
+                type: string
+          x-oad-type: response
+      parameters:
+        -
+          name: idConvenzione
+          in: body
+          required: true
+          schema:
+            x-oad-type: string
+            type: string
+          x-oad-type: parameter
+        -
+          name: iivelliStruttura
+          in: body
+          required: true
+          schema:
+            x-oad-type: array
+            type: array
+            title: 'Livelli struttura'
+            items:
+              x-oad-type: object
+              type: object
+              title: 'livello struttura'
+              properties:
+                nomeLivelloStruttura:
+                  x-oad-type: string
+                  type: string
+                tipologiaLivelloStruttura:
+                  x-oad-type: string
+                  type: string
+          x-oad-type: parameter
+    x-oad-type: operation
+  /search-struttura-organizzativa:
+    post:
+      summary: 'Ricerca uno o più strutture organizzative'
+      responses:
+        '200':
+          description: 'Ritorna uno o più strutture organizzative'
+          schema:
+            x-oad-type: array
+            type: array
+            title: listaStruttureOrganizzative
+            description: 'Lista delle strutture organizzative'
+            items:
+              x-oad-type: object
+              type: object
+              title: Convenzione
+              properties:
+                idConvenzione:
+                    x-oad-type: string
+                    type: string
+                iivelliStruttura:
+                    x-oad-type: array
+                    type: array
+                    items:
+                        x-oad-type: object
+                        type: object
+                        description: 'livello struttura'
+                        properties:
+                            nomeLivelloStruttura:
+                                x-oad-type: string
+                                type: string
+                            tipologiaLivelloStruttura:
+                                x-oad-type: string
+                                type: string
+          x-oad-type: response
+      parameters:
+        -
+          name: idConvenzione
+          in: body
+          description: 'Non vengono specificati i parametri di ricerca delle strutture organizzative per ora metto l''idConvenzione e basta'
+          required: true
+          schema:
+            x-oad-type: string
+            type: string
+          x-oad-type: parameter
+    x-oad-type: operation
+definitions:
+  StrutturaOrganizzativa:
+    x-oad-type: object
+    type: object
+    properties:
+      idConvenzione:
+        x-oad-type: string
+        type: string
+      iivelliStruttura:
+        x-oad-type: array
+        type: array
+        items:
+          x-oad-type: object
+          type: object
+          description: 'livello struttura'
+          properties:
+            nomeLivelloStruttura:
+                x-oad-type: string
+                type: string
+            tipologiaLivelloStruttura:
+                x-oad-type: string
+                type: string
+info:
+  title: ConvenzioneAPI
+  version: '1.0'
+  description: 'API che crea/ricerca/edita una struttura organizzativa'
+host: 'com.example:8080'
+basePath: /StrutturaOrganizzativa
+schemes:
+  - https
+swagger: '2.0'

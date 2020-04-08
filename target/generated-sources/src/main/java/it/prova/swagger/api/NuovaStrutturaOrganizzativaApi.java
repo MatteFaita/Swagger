@@ -6,6 +6,7 @@
 package it.prova.swagger.api;
 
 import java.util.List;
+import it.prova.swagger.model.LivelloStruttura;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -21,16 +22,16 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-04-08T17:00:14.854+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-04-08T17:00:14.018+02:00")
 
-@Api(value = "nuova-convenzione", description = "the nuova-convenzione API")
-public interface NuovaConvenzioneApi {
+@Api(value = "nuova-struttura-organizzativa", description = "the nuova-struttura-organizzativa API")
+public interface NuovaStrutturaOrganizzativaApi {
 
-    @ApiOperation(value = "Crea un nuovo convenzionamento", nickname = "nuovaConvenzione", notes = "", tags={  })
+    @ApiOperation(value = "Crea un nuovo nuova struttura organizzativa", nickname = "nuovaStrutturaOrganizzativa", notes = "", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Ritorna successo in caso di avvenuta creazione della convenzionamento") })
-    @RequestMapping(value = "/nuova-convenzione",
+        @ApiResponse(code = 200, message = "Ritorna successo in caso di avvenuta creazione della struttura organizzativa") })
+    @RequestMapping(value = "/nuova-struttura-organizzativa",
         method = RequestMethod.POST)
-    ResponseEntity<Void> nuovaConvenzione(@ApiParam(value = "" ,required=true )  @Valid @RequestBody String NDG,@ApiParam(value = "",required=true) @PathVariable("codiceFICS") String codiceFICS,@ApiParam(value = "" ,required=true )  @Valid @RequestBody String ABI,@ApiParam(value = "" ,required=true )  @Valid @RequestBody String tipoAccesso,@ApiParam(value = "" ,required=true )  @Valid @RequestBody List<byte[]> documenti);
+    ResponseEntity<Void> nuovaStrutturaOrganizzativa(@ApiParam(value = "" ,required=true )  @Valid @RequestBody String idConvenzione,@ApiParam(value = "" ,required=true )  @Valid @RequestBody List<LivelloStruttura> iivelliStruttura);
 
 }

@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
  * Convenzione
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-04-06T16:00:49.501+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-04-08T17:00:14.854+02:00")
 
 public class Convenzione   {
   @JsonProperty("NDG")
@@ -32,7 +32,7 @@ public class Convenzione   {
 
   @JsonProperty("documentiCaricati")
   @Valid
-  private List<String> documentiCaricati = null;
+  private List<byte[]> documentiCaricati = null;
 
   public Convenzione NDG(String NDG) {
     this.NDG = NDG;
@@ -114,14 +114,14 @@ public class Convenzione   {
     this.tipoAccesso = tipoAccesso;
   }
 
-  public Convenzione documentiCaricati(List<String> documentiCaricati) {
+  public Convenzione documentiCaricati(List<byte[]> documentiCaricati) {
     this.documentiCaricati = documentiCaricati;
     return this;
   }
 
-  public Convenzione addDocumentiCaricatiItem(String documentiCaricatiItem) {
+  public Convenzione addDocumentiCaricatiItem(byte[] documentiCaricatiItem) {
     if (this.documentiCaricati == null) {
-      this.documentiCaricati = new ArrayList<String>();
+      this.documentiCaricati = new ArrayList<byte[]>();
     }
     this.documentiCaricati.add(documentiCaricatiItem);
     return this;
@@ -134,11 +134,11 @@ public class Convenzione   {
   @ApiModelProperty(value = "documenti necessari per la creazione del convenzionamento")
 
 
-  public List<String> getDocumentiCaricati() {
+  public List<byte[]> getDocumentiCaricati() {
     return documentiCaricati;
   }
 
-  public void setDocumentiCaricati(List<String> documentiCaricati) {
+  public void setDocumentiCaricati(List<byte[]> documentiCaricati) {
     this.documentiCaricati = documentiCaricati;
   }
 

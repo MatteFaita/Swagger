@@ -5,7 +5,7 @@
  */
 package it.prova.swagger.api;
 
-import java.util.List;
+import it.prova.swagger.model.Convenzione1;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -23,14 +23,14 @@ import javax.validation.constraints.*;
 import java.util.List;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-04-08T17:00:14.854+02:00")
 
-@Api(value = "nuova-convenzione", description = "the nuova-convenzione API")
-public interface NuovaConvenzioneApi {
+@Api(value = "search-convenzione", description = "the search-convenzione API")
+public interface SearchConvenzioneApi {
 
-    @ApiOperation(value = "Crea un nuovo convenzionamento", nickname = "nuovaConvenzione", notes = "", tags={  })
+    @ApiOperation(value = "Ricerca uno o più convenzionamenti", nickname = "searchConvenzionePost", notes = "", response = Convenzione1.class, responseContainer = "List", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Ritorna successo in caso di avvenuta creazione della convenzionamento") })
-    @RequestMapping(value = "/nuova-convenzione",
+        @ApiResponse(code = 200, message = "Ritorna uno o più convenzionamenti", response = Convenzione1.class, responseContainer = "List") })
+    @RequestMapping(value = "/search-convenzione",
         method = RequestMethod.POST)
-    ResponseEntity<Void> nuovaConvenzione(@ApiParam(value = "" ,required=true )  @Valid @RequestBody String NDG,@ApiParam(value = "",required=true) @PathVariable("codiceFICS") String codiceFICS,@ApiParam(value = "" ,required=true )  @Valid @RequestBody String ABI,@ApiParam(value = "" ,required=true )  @Valid @RequestBody String tipoAccesso,@ApiParam(value = "" ,required=true )  @Valid @RequestBody List<byte[]> documenti);
+    ResponseEntity<List<Convenzione1>> searchConvenzionePost(@ApiParam(value = "Non vengono specificati i parametri di ricerca dei convenzionamenti per ora metto l'ndg e basta" ,required=true )  @Valid @RequestBody String NDG);
 
 }

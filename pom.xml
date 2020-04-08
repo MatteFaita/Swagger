@@ -92,6 +92,13 @@
             <artifactId>jackson-datatype-joda</artifactId>
             <version>2.9.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.10.5</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -101,14 +108,16 @@
             <groupId>io.swagger</groupId>
             <artifactId>swagger-codegen-maven-plugin</artifactId>
             <version>2.3.1</version>
-            <executions>
-            <execution>
-                <id>swagger</id>
+
+                <executions>
+
+                <execution>
+                <id>struttura</id>
                 <goals>
                     <goal>generate</goal>
                 </goals>
                 <configuration>
-                    <inputSpec>C:\Users\39334\Downloads\notification-service-master\yaml\src\main\resources\yaml\swagger..yaml</inputSpec>
+                    <inputSpec>C:\Users\39334\Downloads\notification-service-master\yaml\src\main\resources\yaml\struttura-organizzativa.yaml</inputSpec>
                     <language>spring</language>
                     <configOptions>
                         <interfaceOnly>true</interfaceOnly>
@@ -122,7 +131,55 @@
                         </supportingFiles>
                     </environmentVariables>
                 </configuration>
+
+
             </execution>
+                <execution>
+                    <id>convenzionamento</id>
+                    <goals>
+                        <goal>generate</goal>
+                    </goals>
+                    <configuration>
+                        <inputSpec>C:\Users\39334\Downloads\notification-service-master\yaml\src\main\resources\yaml\convenzionamento.yaml</inputSpec>
+                        <language>spring</language>
+                        <configOptions>
+                            <interfaceOnly>true</interfaceOnly>
+                        </configOptions>
+                        <modelPackage>it.prova.swagger.model</modelPackage>
+                        <apiPackage>it.prova.swagger.api</apiPackage>
+                        <output>target/generated-sources</output>
+                        <environmentVariables>
+                            <supportingFiles>
+                                ApiClient.java,ApiException.java,Configuration.java,JSON.java,Pair.java,StringUtil.java,TypeRef.java
+                            </supportingFiles>
+                        </environmentVariables>
+                    </configuration>
+                </execution>
+
+
+                <execution>
+                    <id>operatori</id>
+                    <goals>
+                        <goal>generate</goal>
+                    </goals>
+                    <configuration>
+                        <inputSpec>C:\Users\39334\Downloads\notification-service-master\yaml\src\main\resources\yaml\operatori.yaml</inputSpec>
+                        <language>spring</language>
+                        <configOptions>
+                            <interfaceOnly>true</interfaceOnly>
+                            <dateLibrary>joda</dateLibrary>
+                        </configOptions>
+                        <modelPackage>it.prova.swagger.model</modelPackage>
+                        <apiPackage>it.prova.swagger.api</apiPackage>
+                        <output>target/generated-sources</output>
+                        <environmentVariables>
+                            <supportingFiles>
+                                ApiClient.java,ApiException.java,Configuration.java,JSON.java,Pair.java,StringUtil.java,TypeRef.java
+                            </supportingFiles>
+                        </environmentVariables>
+                    </configuration>
+                </execution>
+
             </executions>
             </plugin>
 
@@ -153,7 +210,31 @@
                     </execution>
                 </executions>
             </plugin>
+
+
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>1.4</version>
+            <executions>
+                <execution>
+                    <id>test</id>
+                    <phase>generate-sources</phase>
+                    <goals>
+                        <goal>add-source</goal>
+                    </goals>
+                    <configuration>
+                        <sources>
+                            <source>${basedir}/target/generated-sources</source>
+                        </sources>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
         </plugins>
+
+
     </build>
 
 

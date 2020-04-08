@@ -856,7 +856,7 @@ Call &lt;code&gt;mvn swagger2cxf:help -Ddetail=true -Dgoal=&amp;lt;goal-name&amp
       <groupId>joda-time</groupId>
       <artifactId>joda-time</artifactId>
       <type>jar</type>
-      <version>2.7</version>
+      <version>2.10.5</version>
     </dependency>
   </dependencies>
 </plugin>
