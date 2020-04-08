@@ -23,7 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-04-08T17:00:14.018+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-04-08T17:07:50.518+02:00")
 
 @Api(value = "modifica-struttura-organizzativa", description = "the modifica-struttura-organizzativa API")
 public interface ModificaStrutturaOrganizzativaApi {

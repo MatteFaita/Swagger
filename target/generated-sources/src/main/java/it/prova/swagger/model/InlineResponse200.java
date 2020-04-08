@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  */
 @ApiModel(description = "Oggetto di risposta")
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-04-08T17:00:15.252+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-04-08T17:07:52.571+02:00")
 
 public class InlineResponse200   {
   @JsonProperty("response")

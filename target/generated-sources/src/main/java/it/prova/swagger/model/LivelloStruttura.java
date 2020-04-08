@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * LivelloStruttura
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-04-08T17:00:14.018+02:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-04-08T17:07:50.518+02:00")
 
 public class LivelloStruttura   {
   @JsonProperty("nomeLivelloStruttura")
